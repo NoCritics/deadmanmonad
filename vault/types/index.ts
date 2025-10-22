@@ -203,6 +203,9 @@ export interface CheckInParams {
  * Claim Parameters
  */
 export interface ClaimParams {
+  /** Vault address */
+  vaultAddress: Address;
+
   /** Beneficiary's wallet client */
   beneficiaryAccount: any;
 

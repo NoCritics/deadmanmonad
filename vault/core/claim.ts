@@ -37,7 +37,7 @@ export async function claimInheritance(
   console.log("   Allocation:", params.beneficiary.allocation.toString(), "wei");
 
   // Check if deadline has passed
-  const vaultData = loadVaultData(params.signedDelegation.from);
+  const vaultData = loadVaultData(params.vaultAddress);
   if (!vaultData) {
     throw new Error("Vault not found");
   }
@@ -206,6 +206,7 @@ export async function simpleClaim(
     "0x1324Ad9507DD8380F3a03f2E19E77De7E1e8d7Ca" as Address;
 
   return claimInheritance({
+    vaultAddress,
     beneficiaryAccount,
     signedDelegation: {
       ...storedDelegation.delegation,
