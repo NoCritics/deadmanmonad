@@ -103,8 +103,8 @@ export async function setupBeneficiaries(
     // Build multi-caveat delegation
     const caveats = caveatBuilder
       .addCaveat("timestamp", {
-        afterThreshold: BigInt(params.deadline), // Can't claim BEFORE deadline
-        beforeThreshold: 253402300799n // Max allowed: Dec 31, 9999 (valid forever AFTER deadline)
+        afterThreshold: params.deadline, // Can't claim BEFORE deadline
+        beforeThreshold: 253402300799 // Max allowed: Dec 31, 9999 (valid forever AFTER deadline)
       })
       .addCaveat("limitedCalls", { limit: 1 }) // One-time claim only
       .addCaveat(
