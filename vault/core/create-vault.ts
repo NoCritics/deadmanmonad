@@ -197,7 +197,6 @@ export async function loadVault(
       transport: http(),
     }),
     implementation: Implementation.Hybrid,
-    deployParams: [vaultAddress, [] as string[], [] as bigint[], [] as bigint[]] as [Address, string[], bigint[], bigint[]], // Will be overridden by address
     address: vaultAddress, // Load existing account
     signer: { account: ownerAccount }, // Changed from 'signatory' to 'signer'
   });
