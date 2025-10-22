@@ -116,7 +116,6 @@ export async function claimInheritance(
   const hash = await walletClient.sendTransaction({
     to: params.delegationManagerAddress,
     data: redeemDelegationCalldata,
-    chain: monadTestnet,
     gas: 3000000n,
     gasPrice: 100000000000n, // 100 gwei
   });
