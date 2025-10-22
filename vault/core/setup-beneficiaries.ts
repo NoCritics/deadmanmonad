@@ -3,7 +3,7 @@ import {
   createDelegation,
   type Delegation,
 } from "@metamask/delegation-toolkit";
-import { type Address, type Hex, encodeFunctionData, createPublicClient, http } from "viem";
+import { type Address, type Hex, encodeFunctionData, createPublicClient, http, keccak256, toHex } from "viem";
 import type { SmartAccount } from "viem/account-abstraction";
 import { SetupBeneficiariesParams, Beneficiary, StoredDelegation } from "../types/index";
 import {
@@ -142,6 +142,9 @@ export async function setupBeneficiaries(
 
     console.log(`   ✓ Delegation signed`);
 
+    // Compute delegation hash using keccak256
+    const delegationHash = keccak256(toHex(JSON.stringify(delegation))) as Hex;
+
     // Calculate percentage
     const percentage = Number(
       (beneficiaryInput.allocation * 10000n) / vaultBalance
@@ -155,7 +158,7 @@ export async function setupBeneficiaries(
       percentage,
       tokenAddress: tokenAddress as Address,
       delegation,
-      delegationHash: delegation.hash,
+      delegationHash,
       hasClaimed: false,
     };
 
@@ -166,7 +169,7 @@ export async function setupBeneficiaries(
       beneficiaryAddress: beneficiaryInput.address,
       delegation,
       signature: signature as Hex,
-      hash: delegation.hash,
+      hash: delegationHash,
       createdAt: getCurrentTimestamp(),
       deadline: params.deadline,
       isDisabled: false,
