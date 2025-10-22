@@ -136,7 +136,7 @@ export async function setupBeneficiaries(
     console.log(`   ✓ Delegation created`);
 
     // Sign delegation (using vault's signDelegation method)
-    const signature = await params.vault.signDelegation({
+    const signature = await (params.vault as any).signDelegation({
       delegation,
     });
 
