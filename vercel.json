@@ -1,9 +1,14 @@
 {
   "version": 2,
+  "buildCommand": "npm install && cd ui && npm install && npm run build",
+  "installCommand": "npm install",
   "builds": [
     {
       "src": "ui/package.json",
-      "use": "@vercel/next"
+      "use": "@vercel/next",
+      "config": {
+        "zeroConfig": true
+      }
     }
   ],
   "routes": [
