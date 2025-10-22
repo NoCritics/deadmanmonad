@@ -1,4 +1,4 @@
-import { DelegationManager } from "@metamask/delegation-toolkit";
+import { DelegationManager } from "@metamask/delegation-toolkit/contracts";
 import { createWalletClient, createPublicClient, http, type Hex } from "viem";
 import type { SmartAccount } from "viem/account-abstraction";
 import { monadTestnet } from "../../mvp/config/chain";

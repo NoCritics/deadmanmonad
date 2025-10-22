@@ -1,8 +1,8 @@
 import {
-  DelegationManager,
   createExecution,
   ExecutionMode,
 } from "@metamask/delegation-toolkit";
+import { DelegationManager } from "@metamask/delegation-toolkit/contracts";
 import {
   createWalletClient,
   createPublicClient,
