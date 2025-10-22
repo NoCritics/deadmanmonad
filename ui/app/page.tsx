@@ -51,6 +51,10 @@ export default function Home() {
               This is a <strong>hackathon demo</strong> for educational purposes. Private keys are stored <strong>unencrypted</strong> in your browser.
               Only use <strong>testnet keys with no real value</strong>. Never enter mainnet keys or keys holding real funds.
             </p>
+            <p className="text-sm leading-relaxed mb-3" style={{ color: '#E65100' }}>
+              <strong>⚡ Serverless Limitation:</strong> Vault data is stored in temporary memory and will be lost when the serverless function restarts (cold starts).
+              For persistent storage, run locally or use a database backend.
+            </p>
             <div className="flex flex-wrap gap-2">
               <span className="text-xs px-3 py-1 rounded-full" style={{ backgroundColor: 'rgba(255, 152, 0, 0.2)', color: '#E65100' }}>
                 🔓 Unencrypted Storage
@@ -60,6 +64,9 @@ export default function Home() {
               </span>
               <span className="text-xs px-3 py-1 rounded-full" style={{ backgroundColor: 'rgba(255, 152, 0, 0.2)', color: '#E65100' }}>
                 🚫 Not Production Ready
+              </span>
+              <span className="text-xs px-3 py-1 rounded-full" style={{ backgroundColor: 'rgba(255, 152, 0, 0.2)', color: '#E65100' }}>
+                ⚡ Temporary Storage
               </span>
             </div>
           </div>

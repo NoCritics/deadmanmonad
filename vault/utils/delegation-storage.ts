@@ -9,7 +9,10 @@ const STORAGE_PREFIX = "monad_vault_";
 const isBrowser = typeof window !== 'undefined' && typeof window.localStorage !== 'undefined';
 
 // Server-side storage directory
-const VAULT_STORAGE_DIR = path.join(process.cwd(), '.vault-storage');
+// Use /tmp on Vercel (serverless), .vault-storage locally
+const VAULT_STORAGE_DIR = process.env.VERCEL
+  ? '/tmp/.vault-storage'
+  : path.join(process.cwd(), '.vault-storage');
 
 /**
  * Ensure server-side storage directory exists
