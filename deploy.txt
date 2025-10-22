@@ -1,0 +1,56 @@
+Deploy a smart contract on Monad using Hardhat
+Hardhat is a comprehensive development environment consisting of different components for editing, compiling, debugging, and deploying your smart contracts.
+
+Requirements
+Before you begin, you need to install the following dependencies:
+
+Node.js v18.0.0 or later
+note
+If you are on Windows, we strongly recommend using WSL 2 when following this guide.
+
+1. Create a new Hardhat project
+tip
+You can use the hardhat-monad template to create a new project with Monad configuration already set up.
+
+hardhat-monad is a Hardhat template with Monad configuration.
+
+Clone the repository to your machine using the command below:
+
+git clone https://github.com/monad-developers/hardhat-monad.git
+
+2. Install dependencies
+npm install
+
+3. Create an .env file
+cp .env.example .env
+
+Edit the .env file with your private key.
+
+warning
+Protect your private key carefully. Never commit it to version control, share it in public repositories, or expose it in client-side code. Your private key provides full access to your funds.
+
+4. Deploy the smart contract
+Deploying to the local hardhat node
+Run hardhat node by running:
+
+npx hardhat node
+
+To deploy the example contract to the local hardhat node, run the following command in a separate terminal:
+
+npx hardhat ignition deploy ignition/modules/Lock.ts
+
+Deploying to Monad Testnet
+The following command will deploy the example contract to the Monad Testnet using Hardhat Ignition:
+
+npx hardhat ignition deploy ignition/modules/Lock.ts --network monadTestnet
+
+To redeploy the same code to a different address, use the command below:
+
+npx hardhat ignition deploy ignition/modules/Lock.ts --network monadTestnet --reset
+
+You can customize deployment parameters:
+
+npx hardhat ignition deploy ignition/modules/Lock.ts --network monadTestnet --parameters '{"unlockTime": 1893456000, "lockedAmount": "1000000000000000"}'
+
+Next Steps
+Check out how to verify the deployed smart contract on Monad Explorer.

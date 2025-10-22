@@ -1,0 +1,183 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --vault-dark: #0D0D12;
+  --vault-darker: #060608;
+  --vault-purple: #8B5CF6;
+  --vault-purple-dark: #6D28D9;
+  --vault-cyan: #06B6D4;
+  --vault-cyan-dark: #0891B2;
+  --vault-border: #1F1F28;
+  --vault-border-light: #2D2D3A;
+  --vault-text: #E4E4E7;
+  --vault-text-dim: #9CA3AF;
+  --vault-success: #10B981;
+  --vault-error: #EF4444;
+}
+
+body {
+  background: linear-gradient(135deg, var(--vault-darker) 0%, var(--vault-dark) 100%);
+  color: var(--vault-text);
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  min-height: 100vh;
+  letter-spacing: -0.01em;
+}
+
+/* Animated background grid */
+body::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image:
+    linear-gradient(var(--vault-border) 1px, transparent 1px),
+    linear-gradient(90deg, var(--vault-border) 1px, transparent 1px);
+  background-size: 50px 50px;
+  opacity: 0.3;
+  pointer-events: none;
+  z-index: 0;
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}
+
+/* Premium card design */
+.card {
+  @apply relative bg-gradient-to-br from-[#1A1A24] to-[#14141C] rounded-2xl p-8 border border-[#2D2D3A] shadow-2xl;
+  backdrop-filter: blur(20px);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(139, 92, 246, 0.3), transparent);
+}
+
+.card:hover {
+  border-color: rgba(139, 92, 246, 0.4);
+  transform: translateY(-2px);
+  box-shadow: 0 20px 60px -15px rgba(139, 92, 246, 0.2);
+}
+
+/* Primary button with gradient */
+.btn-primary {
+  @apply relative bg-gradient-to-r from-[#8B5CF6] to-[#06B6D4] text-white font-semibold py-4 px-8 rounded-xl transition-all disabled:opacity-50 disabled:cursor-not-allowed overflow-hidden;
+  box-shadow: 0 10px 40px -10px rgba(139, 92, 246, 0.5);
+}
+
+.btn-primary::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: left 0.5s;
+}
+
+.btn-primary:hover::before {
+  left: 100%;
+}
+
+.btn-primary:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 15px 50px -10px rgba(139, 92, 246, 0.7);
+}
+
+/* Secondary button */
+.btn-secondary {
+  @apply bg-[#1F1F28] hover:bg-[#2D2D3A] text-[#E4E4E7] font-semibold py-4 px-8 rounded-xl transition-all border border-[#2D2D3A] hover:border-[#8B5CF6];
+}
+
+/* Input field with focus glow */
+.input-field {
+  @apply w-full px-4 py-3 border border-[#2D2D3A] rounded-xl focus:outline-none focus:ring-2 focus:ring-[#8B5CF6] bg-[#14141C] text-[#E4E4E7] placeholder-[#52525B] transition-all;
+}
+
+.input-field:focus {
+  border-color: #8B5CF6;
+  box-shadow: 0 0 20px rgba(139, 92, 246, 0.2);
+}
+
+/* Vault header gradient text */
+.vault-gradient-text {
+  background: linear-gradient(135deg, #8B5CF6 0%, #06B6D4 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  color: #8B5CF6; /* Fallback color if gradient doesn't work */
+}
+
+/* For browsers that don't support background-clip */
+@supports not (background-clip: text) or not (-webkit-background-clip: text) {
+  .vault-gradient-text {
+    color: #8B5CF6;
+    -webkit-text-fill-color: #8B5CF6;
+  }
+}
+
+/* Tab navigation */
+.tab-button {
+  @apply relative py-4 px-8 rounded-xl font-semibold transition-all overflow-hidden;
+}
+
+.tab-button.active {
+  @apply bg-gradient-to-r from-[#8B5CF6] to-[#06B6D4] text-white;
+  box-shadow: 0 8px 30px -5px rgba(139, 92, 246, 0.5);
+}
+
+.tab-button:not(.active) {
+  @apply bg-[#1F1F28] text-[#9CA3AF] hover:text-[#E4E4E7] hover:bg-[#2D2D3A] border border-[#2D2D3A];
+}
+
+/* Success/Error states */
+.status-success {
+  @apply bg-gradient-to-r from-[#10B981]/10 to-[#10B981]/5 border border-[#10B981]/30 text-[#10B981] rounded-xl p-4;
+}
+
+.status-error {
+  @apply bg-gradient-to-r from-[#EF4444]/10 to-[#EF4444]/5 border border-[#EF4444]/30 text-[#EF4444] rounded-xl p-4;
+}
+
+/* Loading spinner */
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+.spinner {
+  border: 3px solid rgba(139, 92, 246, 0.1);
+  border-top-color: #8B5CF6;
+  border-radius: 50%;
+  width: 24px;
+  height: 24px;
+  animation: spin 0.8s linear infinite;
+}
+
+/* Beneficiary card */
+.beneficiary-card {
+  @apply bg-[#1F1F28] border border-[#2D2D3A] rounded-xl p-6 hover:border-[#8B5CF6]/40 transition-all;
+}
+
+/* Progress bar */
+.progress-bar {
+  @apply h-2 bg-[#2D2D3A] rounded-full overflow-hidden;
+}
+
+.progress-fill {
+  @apply h-full bg-gradient-to-r from-[#8B5CF6] to-[#06B6D4] rounded-full transition-all;
+}

@@ -1,0 +1,21 @@
+{
+  "name": "monad-metamask-mvp",
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "mvp": "tsx mvp/index.ts",
+    "dev": "tsx mvp/index.ts",
+    "vault": "tsx vault/example-vault-flow.ts",
+    "vault-example": "tsx vault/example-vault-flow.ts"
+  },
+  "dependencies": {
+    "@metamask/delegation-toolkit": "^0.13.0",
+    "viem": "^2.21.0",
+    "dotenv": "^16.4.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20.0.0",
+    "tsx": "^4.0.0",
+    "typescript": "^5.0.0"
+  }
+}

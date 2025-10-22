@@ -1,0 +1,48 @@
+Overview
+The 4337 shBundler is a fully compliant 4337 bundler that is fully compatible with the Monad blockchain. It is a permissionless bundler that is designed to be used by any dApp on Monad.
+
+Getting Started
+Visit the official shBundler GitHub repository to learn more and get started.
+
+Being 4337 compliant, the shBundler is ready to use with your favorite bundler client, like Permissionless, by simply providing the shBundler's RPC endpoint.
+
+
+Paymaster
+Overview
+The Fastlane paymaster allows anyone to leverage their shMon balance to pay for user operations gas fees on Monad.
+
+Addresses
+Monad Testnet
+The paymaster contract address can be retrieved via the paymaster4337 function on the AddressHub contract. AddressHub contract address: 0xC9f0cDE8316AbC5Efc8C3f5A6b571e815C021B51
+
+interface AddressHub {
+    function paymaster4337() external view returns (address);
+}
+
+address addressHubAddress = 0xC9f0cDE8316AbC5Efc8C3f5A6b571e815C021B51;
+address paymaster = AddressHub(addressHubAddress).paymaster4337();
+
+Monad Mainnet
+Soon™
+
+How it works
+To use the paymaster, the user or the sponsor MUST stake and bond their MON to the paymaster at shmonad.xyz. Once you have bonded to the paymaster, you can self-sponsor or have a third party sponsor gas payments via shMON instead of MON.
+
+Self sponsoring
+Users can pay for their own user operations by bonding their shMon balances to the Fastlane paymaster. Once done, users will be able to submit user operations without having to maintain their smart wallet balance or depositing into the entrypoint contract.
+
+Third party sponsoring
+Apps and wallets can sponsor gas fees for their users by bonding shMon to the paymaster as well. This allows users to never worry about maintaining a native token balance at any point in time.
+
+
+
+RPC endpoints
+Monad Testnet
+https://monad-testnet.4337-shbundler-fra.fastlane-labs.xyz
+
+wss://monad-testnet.4337-shbundler-fra.fastlane-labs.xyz
+
+
+
+MY CUSTOM RPC ENDPOINT
+https://rpc.monad-testnet.fastlane.xyz/eyJhIjoiMHg5RkIyRDcwQzczNGFhOTc5RTliYWQ0RWEyNGE4OTk4MzhFQ2NFQjZhIiwidCI6MTc2MDk2MzIyMSwicyI6IjB4YzQ4ZjI3MjZmMzdjYzJjMGY2YTA0MTZhNDFmMmY4NDUzODkzYmYwZDkzOThkYzk4YzRkNWVlMWZmY2FmMTBmNjU4OTcxYTZhM2ZjYzVjMjFkZTBlMmIxYTQ2NDhiMjliYWRiNjZjOGIwMzhlMGZiNWE2MzAyNGMyNzAxMjgxMzQxYyJ9
