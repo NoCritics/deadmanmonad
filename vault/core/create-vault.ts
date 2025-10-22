@@ -54,7 +54,7 @@ export async function createVault(
   const ownerAccount = privateKeyToAccount(privateKey);
 
   // Generate unique salt to ensure fresh vault deployment
-  const uniqueSalt = `0x${Date.now().toString(16).padStart(64, '0')}`;
+  const uniqueSalt = `0x${Date.now().toString(16).padStart(64, '0')}` as Hex;
 
   const vault = await toMetaMaskSmartAccount({
     client: createPublicClient({
