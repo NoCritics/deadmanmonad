@@ -1,4 +1,6 @@
 {
-  "buildCommand": "npm install && cd ui && npm install && npm run build && cd .. && cp -r ui/.next .next && (cp -r ui/public public 2>/dev/null || true) && cp ui/next.config.mjs next.config.mjs && cp ui/package.json package.json",
-  "installCommand": "npm install"
+  "buildCommand": "npm install && cd ui && npm install && npm run build",
+  "outputDirectory": "ui/.next",
+  "installCommand": "npm install",
+  "devCommand": "cd ui && npm run dev"
 }
