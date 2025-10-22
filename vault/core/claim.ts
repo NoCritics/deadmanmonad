@@ -114,6 +114,7 @@ export async function claimInheritance(
   console.log("\n📤 Submitting claim transaction...");
 
   const hash = await walletClient.sendTransaction({
+    account: params.beneficiaryAccount,
     to: params.delegationManagerAddress,
     data: redeemDelegationCalldata,
     gas: 3000000n,
