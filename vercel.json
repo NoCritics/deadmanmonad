@@ -1,10 +1,6 @@
 {
-  "version": 2,
-  "installCommand": "npm install && cd ui && npm install",
-  "builds": [
-    {
-      "src": "ui/package.json",
-      "use": "@vercel/next"
-    }
-  ]
+  "buildCommand": "npm install && cd ui && npm install && npm run build",
+  "outputDirectory": "ui/.next",
+  "framework": "nextjs",
+  "installCommand": "npm install"
 }
