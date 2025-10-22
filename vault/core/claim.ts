@@ -37,7 +37,7 @@ export async function claimInheritance(
   console.log("   Allocation:", params.beneficiary.allocation.toString(), "wei");
 
   // Check if deadline has passed
-  const vaultData = loadVaultData(params.signedDelegation.delegation.from);
+  const vaultData = loadVaultData(params.signedDelegation.from);
   if (!vaultData) {
     throw new Error("Vault not found");
   }
